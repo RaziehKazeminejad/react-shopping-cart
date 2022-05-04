@@ -13,6 +13,10 @@ body{
   background-color: #f6f6f6;
 }
 
+a{
+  text-decoration: none;
+}
+
 .productList{
   display: flex;
   margin-top: 50px;
@@ -44,7 +48,7 @@ body{
 .productDesc{
   padding: 10px;
   color: #fff;
-  background-color: #737ee8;
+  background-color: #6d28d9;
   display: flex;
   justify-content: space-between;
 }
@@ -54,14 +58,14 @@ body{
   border: none;
   outline: none;
   padding: 6px 15px;
-  background-color: #737ee8;
+  background-color: #6d28d9;
   color: #fff;
   border-radius: 5px;
 }
 
 .primary{
   background-color: #f6f6f6;
-  color: #737ee8;
+  color: #6d28d9;
 }
 
 .cartItemList {
