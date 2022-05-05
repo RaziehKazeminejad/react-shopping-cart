@@ -10,7 +10,7 @@ export default function HomePage() {
   const { cart } = useCart();
   const dispatch = useCartActions();
   const addProductHandler = (product) => {
-    toast.success(`${product.name} added to cart`)
+    toast.success(`${product.name} به سبد خرید اضافه شد`)
     dispatch({ type: 'ADD_TO_CART', payload: product });
   };
 
@@ -26,18 +26,18 @@ export default function HomePage() {
                 </div>
                 <div className="productDesc">
                   <p>{product.name}</p>
-                  <p>$ {product.price}</p>
+                  <p>{product.price} تومان</p>
                   <div>
                     {checkInCart(cart, product) ? (
                       <button className="btn primary">
-                        <Link to="cart">In Cart</Link>
+                        <Link to="cart">سبد خرید</Link>
                       </button>
                     ) : (
                       <button
                         className="btn primary"
                         onClick={() => addProductHandler(product)}
                       >
-                        Add to Cart
+                        افزودن به سبد خرید
                       </button>
                     )}
                   </div>

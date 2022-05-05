@@ -10,6 +10,7 @@
 }
 
 body{
+  direction: rtl;
   background-color: #f6f6f6;
 }
 
@@ -133,10 +134,10 @@ a{
 }
 
 .btnGroup button:first-child {
-  border-radius: 5px 0 0 5px;
+  border-radius: 0 5px 5px 0;
 }
 .btnGroup button:last-child {
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px 0 0 5px;
 }
 .btnGroup button:nth-child(2) {
   border-left: 0;

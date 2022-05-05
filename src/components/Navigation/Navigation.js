@@ -6,19 +6,16 @@ export default function Navigation() {
   const {cart}= useCart()
   return (
     <header className="mainNavigation">
-      <nav>
-        <ul>
-          <li>
+
+          <div className='nav'>
             <NavLink to="/" className={(navData) => navData.isActive ? "activeLink" : "" }>
-              Home
+              خانه
             </NavLink>
-          </li>
-          <li className='cartLink'>
-            <NavLink to="/cart" className={(navData) => navData.isActive ? "activeLink" : "" }>Cart</NavLink>
+          </div>
+          <div className='cartLink nav'>
+            <NavLink to="/cart" className={(navData) => navData.isActive ? "activeLink" : "" }>سبد خرید</NavLink>
             <span>{cart.length}</span>
-          </li>
-        </ul>
-      </nav>
+          </div>
     </header>
   );
 }

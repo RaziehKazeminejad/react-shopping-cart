@@ -9,7 +9,7 @@ export default function CartPage() {
     return (
       <Layout>
         <main>
-          <h2>cart id empty !</h2>
+          <h2>سبد خرید شما خالی است!</h2>
         </main>
       </Layout>
     );
@@ -56,24 +56,28 @@ const CartSummery = ({ total, cart }) => {
 
   return (
     <section className="cartSummery">
-      <h2 style={{ marginBottom: '30px' }}>Cart summery</h2>
+      <h2 style={{ marginBottom: '30px' }}>سفارش شما</h2>
       <div className="summeryItem">
-        <p>original total price</p>
-        <p> {originalTotalPrice} $</p>
+        <p>قیمت کالا ها</p>
+        <p> {originalTotalPrice} تومان</p>
       </div>
       <div className="summeryItem">
-        <p>cart discount</p>
-        <p>{originalTotalPrice - total} $</p>
+        <p>تخفیف</p>
+        <p>{originalTotalPrice - total} تومان</p>
+      </div>
+      <div className="summeryItem">
+        <p>مبلغ کل</p>
+        <p> {total} تومان</p>
       </div>
 
       <div className="summeryItem net">
-        <p>net price </p>
-        <p> {total} $</p>
+        <p>مبلغ قابل پرداخت</p>
+        <p> {total} تومان</p>
       </div>
-      <Link to="/signup?redirect=checkout">
+      <Link to="/checkout">
         <button
-          className="btn primary"
-          style={{ marginTop: '20px 0', width: '100%' }}
+          className="btn"
+          style={{ marginTop: '25px', width: '100%' }}
         >
           Go to checkout
         </button>
