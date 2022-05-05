@@ -1,0 +1,9 @@
+.fromContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+.fromContainer button{
+    padding: 7px 40px;
+    margin-right: 28rem;
+}  
