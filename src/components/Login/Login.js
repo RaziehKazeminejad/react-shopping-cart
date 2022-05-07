@@ -31,7 +31,7 @@ export default function LoginForm() {
   return (
     <div className="loginFromContainer">
       <form onSubmit={formik.handleSubmit}>
-        <Input label="ایمیل" name="email" formik={formik} />
+        <Input label="ایمیل" name="email" type='email' formik={formik} />
         <Input
           label="رمز عبور"
           name="password"

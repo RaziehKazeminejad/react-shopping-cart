@@ -21,6 +21,7 @@ input[type="tel"],
 input[type="email"],
 input[type="password"],
 select {
+    direction: ltr;
     width: 400px;
     padding: 6px 12px;
     display: block;

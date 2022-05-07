@@ -1,8 +1,11 @@
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import Input from '../../common/Input/Input';
+import signupUser from '../../services/signupService';
 import './Signup.css';
+import { toast } from 'react-toastify';
 
 const initialValues = {
   name: '',
@@ -10,10 +13,6 @@ const initialValues = {
   phoneNumber: '',
   password: '',
   passwordConfirm: '',
-};
-
-const onSubmit = (values) => {
-  console.log('Form data', values);
 };
 
 const validationSchema = Yup.object({
@@ -41,6 +40,25 @@ const validationSchema = Yup.object({
 });
 
 export default function SignupForm() {
+
+  const onSubmit = async (values) => {
+    const userData = {
+      name: values.name,
+      email: values.email,
+      phoneNumber: values.name,
+      password: values.password,
+    };
+    // console.log('Form data', values);
+    try {
+      const { data } = await signupUser(userData);
+      console.log(data);
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
+
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -52,9 +70,9 @@ export default function SignupForm() {
     <div className="fromContainer">
       <form onSubmit={formik.handleSubmit}>
         <Input label="نام کاربری" name="name" formik={formik} />
-        <Input label="ایمیل" name="email" formik={formik} />
+        <Input label="ایمیل" name="email" type='email' formik={formik} />
         <Input
-          label="شماره تماس"
+          label="شماره موبایل"
           name="phoneNumber"
           formik={formik}
           type="tel"
