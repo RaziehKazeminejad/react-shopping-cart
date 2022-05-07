@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import Input from '../../common/Input/Input';
 import './Login.css';
@@ -28,7 +29,7 @@ export default function LoginForm() {
   });
 
   return (
-    <div className="fromContainer">
+    <div className="loginFromContainer">
       <form onSubmit={formik.handleSubmit}>
         <Input label="ایمیل" name="email" formik={formik} />
         <Input
@@ -40,6 +41,9 @@ export default function LoginForm() {
         <button className="btn" disabled={!formik.isValid} type="submit">
           ورود
         </button>
+        <Link to="/signup">
+          <p>هنوز ثبت نام نکرده اید؟</p>
+        </Link>
       </form>
     </div>
   );

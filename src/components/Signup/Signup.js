@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import Input from '../../common/Input/Input';
 import './Signup.css';
@@ -73,6 +74,9 @@ export default function SignupForm() {
         <button className="btn" disabled={!formik.isValid} type="submit">
           ثبت نام
         </button>
+        <Link to="/login">
+          <p>از قبل وارد سیستم شده اید؟</p>
+        </Link>
       </form>
     </div>
   );

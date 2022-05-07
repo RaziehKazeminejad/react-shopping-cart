@@ -46,7 +46,7 @@ button {
     color: red;
     display: flex;
     justify-content: start;
-    margin: 1rem 10rem;
+    margin: 10px 130px;
     font-size: 15px;
     font-family: sans-serif;
 }
