@@ -6,6 +6,7 @@ import Input from '../../common/Input/Input';
 import signupUser from '../../services/signupService';
 import './Signup.css';
 import { toast } from 'react-toastify';
+import { useAuthActions } from '../../Providers/AuthProvider';
 
 const initialValues = {
   name: '',
@@ -37,9 +38,10 @@ const validationSchema = Yup.object({
   passwordConfirm: Yup.string()
     .required('پر کردن این فیلد اجباریست !')
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
-});
+}); 
 
 export default function SignupForm(props) {
+  const setAuth = useAuthActions();
   const navigate = useNavigate();
 
   const onSubmit = async (values) => {
@@ -50,7 +52,9 @@ export default function SignupForm(props) {
       password: values.password,
     };
     try {
-      await signupUser(userData);
+      const { data } = await signupUser(userData);
+      setAuth(data);
+      localStorage.setItem('authState', JSON.stringify(data));
       navigate('/');
     } catch (error) {
       if (error.response && error.response.data.message) {
