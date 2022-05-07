@@ -1,16 +1,15 @@
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import Input from '../../common/Input/Input';
+import loginUser from '../../services/loginService';
 import './Login.css';
+import { toast } from 'react-toastify';
 
 const initialValues = {
   email: '',
   password: '',
-};
-
-const onSubmit = (values) => {
-  console.log('Form data', values);
 };
 
 const validationSchema = Yup.object({
@@ -21,6 +20,19 @@ const validationSchema = Yup.object({
 });
 
 export default function LoginForm() {
+  const navigate = useNavigate()
+
+  const onSubmit = async (values) => {
+    try {
+      await loginUser(values);
+      navigate('/')
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        toast.error(error.response.data.message);
+      }
+    }
+  };
+
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -31,7 +43,7 @@ export default function LoginForm() {
   return (
     <div className="loginFromContainer">
       <form onSubmit={formik.handleSubmit}>
-        <Input label="ایمیل" name="email" type='email' formik={formik} />
+        <Input label="ایمیل" name="email" type="email" formik={formik} />
         <Input
           label="رمز عبور"
           name="password"

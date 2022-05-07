@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import Input from '../../common/Input/Input';
@@ -39,19 +39,19 @@ const validationSchema = Yup.object({
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
-export default function SignupForm() {
+export default function SignupForm(props) {
+  const navigate = useNavigate();
 
   const onSubmit = async (values) => {
     const userData = {
       name: values.name,
       email: values.email,
-      phoneNumber: values.name,
+      phoneNumber: values.phoneNumber,
       password: values.password,
     };
-    // console.log('Form data', values);
     try {
-      const { data } = await signupUser(userData);
-      console.log(data);
+      await signupUser(userData);
+      navigate('/');
     } catch (error) {
       if (error.response && error.response.data.message) {
         toast.error(error.response.data.message);
@@ -70,7 +70,7 @@ export default function SignupForm() {
     <div className="fromContainer">
       <form onSubmit={formik.handleSubmit}>
         <Input label="نام کاربری" name="name" formik={formik} />
-        <Input label="ایمیل" name="email" type='email' formik={formik} />
+        <Input label="ایمیل" name="email" type="email" formik={formik} />
         <Input
           label="شماره موبایل"
           name="phoneNumber"
