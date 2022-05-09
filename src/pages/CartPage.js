@@ -74,7 +74,7 @@ const CartSummery = ({ total, cart }) => {
         <p>مبلغ قابل پرداخت</p>
         <p> {total} تومان</p>
       </div>
-      <Link to="/checkout">
+      <Link to="/signup?redirect=checkout">
         <button
           className="btn"
           style={{ marginTop: '25px', width: '100%' }}

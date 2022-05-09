@@ -1,3 +1,4 @@
+import {useEffect} from 'react'
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,8 @@ import Input from '../../common/Input/Input';
 import signupUser from '../../services/signupService';
 import './Signup.css';
 import { toast } from 'react-toastify';
-import { useAuthActions } from '../../Providers/AuthProvider';
+import { useAuth, useAuthActions } from '../../Providers/AuthProvider';
+import { useQuery } from '../../hooks/useQuery';
 
 const initialValues = {
   name: '',
@@ -38,11 +40,21 @@ const validationSchema = Yup.object({
   passwordConfirm: Yup.string()
     .required('پر کردن این فیلد اجباریست !')
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
-}); 
+});
 
 export default function SignupForm(props) {
+  const query = useQuery();
+  const redirect = query.get('redirect') || '/';
   const setAuth = useAuthActions();
+  const auth =useAuth()
   const navigate = useNavigate();
+ 
+  useEffect(() => {
+    if(auth){
+      navigate(redirect)
+    }
+  }, [redirect, auth])
+  
 
   const onSubmit = async (values) => {
     const userData = {
@@ -54,8 +66,7 @@ export default function SignupForm(props) {
     try {
       const { data } = await signupUser(userData);
       setAuth(data);
-      localStorage.setItem('authState', JSON.stringify(data));
-      navigate('/');
+      navigate(redirect);
     } catch (error) {
       if (error.response && error.response.data.message) {
         toast.error(error.response.data.message);
@@ -96,7 +107,8 @@ export default function SignupForm(props) {
         <button className="btn" disabled={!formik.isValid} type="submit">
           ثبت نام
         </button>
-        <Link to="/login">
+        <Link to={`/login?redirect=${redirect}`}>
+        
           <p>از قبل وارد سیستم شده اید؟</p>
         </Link>
       </form>
