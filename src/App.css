@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   font-family: 'Vazirmatn', sans-serif;
 }
 
@@ -78,6 +77,7 @@ button:disabled{
 
 .cartItemList {
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   background-color: #fff;
   border-radius: 5px;

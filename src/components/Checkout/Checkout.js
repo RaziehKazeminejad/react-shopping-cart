@@ -20,22 +20,36 @@ export default function Checkout() {
         {auth ? (
           <>
             <section className="cartItemList">
-              <h3>جزئیات سفارش</h3>
+              <h2>جزئیات صورت حساب</h2>
               <p>نام کاربری : {auth.name}</p>
               <p>ایمیل : {auth.email}</p>
               <p>شماره موبایل: {auth.phoneNumber}</p>
             </section>
             <section className="cartSummery">
-              {cart &&
-                cart.map((c) => {
-                  return (
-                    <div>
-                      {c.name} * {c.quantity} : {c.quantity * c.offPrice}
-                    </div>
-                  );
-                })}
+              <h2 style={{ marginBottom: '30px' }}>سفارش شما</h2>
+              <div className="summeryItem">
+                <p>محصول</p>
+                <p>جمع جزء</p>
+              </div>
               <hr />
-              <div>مبلغ کل : {total}</div>
+              <div>
+                {cart &&
+                  cart.map((c) => {
+                    return (
+                      <div className="summeryItem">
+                        <p>
+                          {c.name} * {c.quantity} :
+                        </p>
+                        <p> {c.quantity * c.offPrice} تومان</p>
+                      </div>
+                    );
+                  })}
+              </div>
+
+              <div className="summeryItem net">
+                <p>مبلغ قابل پرداخت</p>
+                <p> {total} تومان</p>
+              </div>
             </section>
           </>
         ) : (
