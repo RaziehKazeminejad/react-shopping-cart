@@ -36,7 +36,7 @@ export default function Checkout() {
                 {cart &&
                   cart.map((c) => {
                     return (
-                      <div className="summeryItem">
+                      <div key={c.id} className="summeryItem">
                         <p>
                           {c.name} * {c.quantity} :
                         </p>
