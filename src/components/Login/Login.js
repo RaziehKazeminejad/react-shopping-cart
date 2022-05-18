@@ -18,8 +18,8 @@ const initialValues = {
 const validationSchema = Yup.object({
   email: Yup.string()
     .email('Invalid email format')
-    .required('پر کردن این فیلد اجباریست !'),
-  password: Yup.string().required('پر کردن این فیلد اجباریست !'),
+    .required('this field is required !'),
+  password: Yup.string().required('this field is required !'),
 });
 
 export default function LoginForm() {
@@ -57,18 +57,18 @@ export default function LoginForm() {
   return (
     <div className="loginFromContainer">
       <form onSubmit={formik.handleSubmit}>
-        <Input label="ایمیل" name="email" type="email" formik={formik} />
+        <Input label="Email" name="email" type="email" formik={formik} />
         <Input
-          label="رمز عبور"
+          label="Password"
           name="password"
           formik={formik}
           type="password"
         />
         <button className="btn" disabled={!formik.isValid} type="submit">
-          ورود
+          Login
         </button>
         <Link to={`/signup?redirect=${redirect}`}>
-          <p>هنوز ثبت نام نکرده اید؟</p>
+          <p>Still not registred?</p>
         </Link>
       </form>
     </div>

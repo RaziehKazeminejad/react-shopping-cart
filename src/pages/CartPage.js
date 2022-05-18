@@ -9,7 +9,7 @@ export default function CartPage() {
     return (
       <Layout>
         <main>
-          <h2>سبد خرید شما خالی است!</h2>
+          <h2>Cart is empty!</h2>
         </main>
       </Layout>
     );
@@ -29,10 +29,11 @@ export default function CartPage() {
               return (
                 <div className="cartItem" key={item.id}>
                   <div className="itemImg">
-                    <img src={item.image} alt={item.name}></img>
+                    <img src={item.thumbnail} alt={item.title}></img>
                   </div>
-                  <div>{item.name}</div>
-                  <div>{item.offPrice * item.quantity}</div>
+                  <div>{item.title}</div>
+                  <div>{item.price * item.quantity} $</div>
+                  <div>{item.discountPercentage * item.quantity} $</div>
                   <div className="btnGroup">
                     <button onClick={() => decHandler(item)}>-</button>
                     <button>{item.quantity}</button>
@@ -56,29 +57,26 @@ const CartSummery = ({ total, cart }) => {
 
   return (
     <section className="cartSummery">
-      <h2 style={{ marginBottom: '30px' }}>سفارش شما</h2>
+      <h2 style={{ marginBottom: '30px' }}>Order Summary</h2>
       <div className="summeryItem">
-        <p>قیمت کالا ها</p>
-        <p> {originalTotalPrice} تومان</p>
+        <p>Order Total</p>
+        <p> {originalTotalPrice} $</p>
       </div>
       <div className="summeryItem">
-        <p>تخفیف</p>
-        <p>{originalTotalPrice - total} تومان</p>
+        <p>Discount</p>
+        <p>{total} $</p>
       </div>
       <div className="summeryItem">
-        <p>مبلغ کل</p>
-        <p> {total} تومان</p>
+        <p>SubTotlal</p>
+        <p> {originalTotalPrice - total} $</p>
       </div>
 
       <div className="summeryItem net">
-        <p>مبلغ قابل پرداخت</p>
-        <p> {total} تومان</p>
+        <p>Total</p>
+        <p> {originalTotalPrice - total} $</p>
       </div>
       <Link to="/signup?redirect=/checkout">
-        <button
-          className="btn"
-          style={{ marginTop: '25px', width: '100%' }}
-        >
+        <button className="btn" style={{ marginTop: '25px', width: '100%' }}>
           Go to checkout
         </button>
       </Link>

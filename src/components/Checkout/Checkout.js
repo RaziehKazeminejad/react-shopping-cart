@@ -10,7 +10,7 @@ export default function Checkout() {
   if (!cart.length)
     return (
       <main className="container">
-        <Link to="/"> بزن بریم خرید ;) </Link>
+        <Link to="/"> Let's shopping ;) </Link>
       </main>
     );
 
@@ -20,16 +20,16 @@ export default function Checkout() {
         {auth ? (
           <>
             <section className="cartItemList">
-              <h2>جزئیات صورت حساب</h2>
-              <p>نام کاربری : {auth.name}</p>
-              <p>ایمیل : {auth.email}</p>
-              <p>شماره موبایل: {auth.phoneNumber}</p>
+              <h2>Account details</h2>
+              <p>Username : {auth.name}</p>
+              <p>Email : {auth.email}</p>
+              <p>Phone Number: {auth.phoneNumber}</p>
             </section>
             <section className="cartSummery">
-              <h2 style={{ marginBottom: '30px' }}>سفارش شما</h2>
+              <h2 style={{ marginBottom: '30px' }}>Order Summary</h2>
               <div className="summeryItem">
-                <p>محصول</p>
-                <p>جمع جزء</p>
+                <p>Product</p>
+                <p>Subtotal</p>
               </div>
               <hr />
               <div>
@@ -38,22 +38,22 @@ export default function Checkout() {
                     return (
                       <div key={c.id} className="summeryItem">
                         <p>
-                          {c.name} * {c.quantity} :
+                          {c.title} * {c.quantity} :
                         </p>
-                        <p> {c.quantity * c.offPrice} تومان</p>
+                        <p> {c.quantity * c.discountPercentage} تومان</p>
                       </div>
                     );
                   })}
               </div>
 
               <div className="summeryItem net">
-                <p>مبلغ قابل پرداخت</p>
-                <p> {total} تومان</p>
+                <p>Total</p>
+                <p> {total} $</p>
               </div>
             </section>
           </>
         ) : (
-          <p>لطفا وارد شوید !</p>
+          <p>Please Login !</p>
         )}
       </section>
     </main>

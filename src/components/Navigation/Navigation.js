@@ -13,7 +13,7 @@ export default function Navigation() {
           to="/"
           className={(navData) => (navData.isActive ? 'activeLink' : '')}
         >
-          خانه
+          Home
         </NavLink>
       </div>
       <div className="cartLink nav">
@@ -21,7 +21,7 @@ export default function Navigation() {
           to="/cart"
           className={(navData) => (navData.isActive ? 'activeLink' : '')}
         >
-          سبد خرید
+          Cart
         </NavLink>
         <span>{cart.length}</span>
         <NavLink
@@ -29,9 +29,9 @@ export default function Navigation() {
           className={(navData) => (navData.isActive ? 'activeLink' : '')}
         >
           {userData ? (
-            <p style={{ fontSize: '14px' }}>پروفایل</p>
+            <p style={{ fontSize: '14px' }}>Profile</p>
           ) : (
-            <p style={{ fontSize: '14px' }}>ورود / ثبت نام</p>
+            <p style={{ fontSize: '14px' }}>Login / Sign Up</p>
           )}
         </NavLink>
       </div>

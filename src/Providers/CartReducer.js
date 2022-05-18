@@ -14,7 +14,7 @@ const addProductToCart = (state, payload) => {
   return {
     ...state,
     cart: updatedCart,
-    total: state.total + payload.offPrice,
+    total: state.total + payload.discountPercentage,
   };
 };
 
@@ -29,7 +29,7 @@ const removeProductFromCart = (state, payload) => {
     return {
       ...state,
       cart: filteredCart,
-      total: state.total - payload.offPrice,
+      total: state.total - payload.discountPercentage,
     };
   } else {
     updatedItem.quantity--;
@@ -37,7 +37,7 @@ const removeProductFromCart = (state, payload) => {
     return {
       ...state,
       cart: updatedCart,
-      total: state.total - payload.offPrice,
+      total: state.total - payload.discountPercentage,
     };
   }
 };
