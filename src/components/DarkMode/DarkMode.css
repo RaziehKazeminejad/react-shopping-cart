@@ -1,0 +1,37 @@
+:root {
+  --font-color: #333;
+  --background-color: #fff;
+  --link-color: cornflowerblue;
+}
+
+/* 2 */
+[data-theme="dark"] {
+  --font-color: #5218af;
+  --background-color: #333;
+  --link-color: #6d28d9;
+}
+
+/* 3 */
+body {
+  background-color: var(--background-color);
+  color: var(--font-color);
+}
+.toggle-button {
+  margin-top: 6px;
+  -webkit-appearance: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  position: relative;
+  transition: 0.4s;
+  background: url("https://raw.githubusercontent.com/RuchiVS/image-upload/main/sun.png")
+    no-repeat center #ffffff;
+  background-size: 20px;
+  cursor: pointer;
+}
+.toggle-button:checked {
+  background: url("https://raw.githubusercontent.com/RuchiVS/image-upload/main/moon.png")
+  no-repeat center #212121;
+  background-size: 20px;
+}

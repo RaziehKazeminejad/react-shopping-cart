@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../Providers/AuthProvider';
 import { useCart } from '../../Providers/CartProvider';
+import DarkMode from '../DarkMode/DarkMode';
 import './Navigation.css';
 
 export default function Navigation() {
@@ -34,6 +35,7 @@ export default function Navigation() {
             <p style={{ fontSize: '14px' }}>Login / Sign Up</p>
           )}
         </NavLink>
+        <DarkMode />
       </div>
     </header>
   );
