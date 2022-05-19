@@ -14,21 +14,21 @@ export default function ProfilePage() {
               <section className="cartSummery">
                 <h2 style={{ marginBottom: '30px' }}>{auth.name}</h2>
                 <div>
-                  <Link to="/profile">حساب کاربری</Link>
+                  <Link to="/profile">Your account</Link>
                 </div>
                 <div>
-                  <Link to="/checkout">سفارشات</Link>
+                  <Link to="/checkout">Orders</Link>
                 </div>
               </section>
               <section className="cartItemList">
-                <h2>اطلاعات شخصی</h2>
-                <p>نام کاربری : {auth.name}</p>
-                <p>ایمیل : {auth.email}</p>
-                <p>شماره موبایل: {auth.phoneNumber}</p>
+                <h2>Personal Information</h2>
+                <p>Username : {auth.name}</p>
+                <p>Email : {auth.email}</p>
+                <p>Phone Number : {auth.phoneNumber}</p>
               </section>
             </>
           ) : (
-            <p>لطفا وارد شوید !</p>
+            <p>Please Login !</p>
           )}
         </section>
       </main>

@@ -6,11 +6,9 @@ input:focus {
 label {
     display: flex;
     margin-bottom: 5px;
-    font-weight: 800;
 }
   
 input + label {
-    font-weight: bold;
     display: inline-flex;
     margin-right: 20px;
     margin-left: 5px;
@@ -46,8 +44,8 @@ button {
 .error {
     color: red;
     display: flex;
-    justify-content: start;
-    margin: 10px 130px;
+    justify-content: flex-start;
+    margin: 12px 0 0 153px;
     font-size: 15px;
     font-family: sans-serif;
 }

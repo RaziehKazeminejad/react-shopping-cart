@@ -17,6 +17,7 @@
 .mainNavigation a{
     display: block;
     padding: 0.5rem 1rem;
+    margin: 10px;
     border-radius: 5px;
     text-decoration: none;
 }
@@ -30,8 +31,8 @@
     position: relative;
 }
 .mainNavigation  span{
-    right: -9px;
-    top: 7px;
+    left: 63px;
+    top: 5px;
     position: absolute;
     display: flex;
     justify-content: center;

@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react';
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -19,42 +19,41 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object({
-  name: Yup.string().required('پر کردن این فیلد اجباریست !'),
+  name: Yup.string().required('This field is required !'),
   email: Yup.string()
-    .email('فرمت ایمیل نادرست است !')
-    .required('پر کردن این فیلد اجباریست !'),
+    .email('Invalid email format !')
+    .required('This field is required !'),
   phoneNumber: Yup.string()
-    .required('پر کردن این فیلد اجباریست !')
-    .matches(/^[0-9]{11}$/, 'شماره موبایل نامعتبر است !')
+    .required('This field is required !')
+    .matches(/^[0-9]{11}$/, 'Invalid phone number !')
     .nullable(),
   password: Yup.string()
-    .required('پر کردن این فیلد اجباریست !')
-    .min(5, 'پسورد باید بیشتر از 5 کاراکتر داشته باشد')
+    .required('This field is required !')
+    .min(5, 'Your password must be longer than 5 characters !')
     .max(25)
-    .matches(/^(?=.{6,})/, 'پسورد باید بیشتر از 6 کاراکتر داشته باشد')
+    .matches(/^(?=.{6,})/, 'Must Contain 6 Characters !')
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])/,
-      'پسورد باید دارای حروف بزرگ و کوچک باشد'
+      'Must Contain One Uppercase, One Lowercase !'
     )
-    .matches(/^(?=.{6,20}$)\D*\d/, 'پسورد باید شامل عدد باشد'),
+    .matches(/^(?=.{6,20}$)\D*\d/, 'Must Contain One Number !'),
   passwordConfirm: Yup.string()
-    .required('پر کردن این فیلد اجباریست !')
-    .oneOf([Yup.ref('password'), null], 'Passwords must match'),
+    .required('This field is required !')
+    .oneOf([Yup.ref('password'), null], 'Passwords must match !'),
 });
 
 export default function SignupForm(props) {
   const query = useQuery();
   const redirect = query.get('redirect') || '/';
   const setAuth = useAuthActions();
-  const auth =useAuth()
+  const auth = useAuth();
   const navigate = useNavigate();
- 
+
   useEffect(() => {
-    if(auth){
-      navigate(redirect)
+    if (auth) {
+      navigate(redirect);
     }
-  }, [redirect, auth])
-  
+  }, [redirect, auth]);
 
   const onSubmit = async (values) => {
     const userData = {
@@ -84,32 +83,31 @@ export default function SignupForm(props) {
   return (
     <div className="fromContainer">
       <form onSubmit={formik.handleSubmit}>
-        <Input label="نام کاربری" name="name" formik={formik} />
-        <Input label="ایمیل" name="email" type="email" formik={formik} />
+        <Input label="UserName" name="name" formik={formik} />
+        <Input label="Email" name="email" type="email" formik={formik} />
         <Input
-          label="شماره موبایل"
+          label="Phone Number"
           name="phoneNumber"
           formik={formik}
           type="tel"
         />
         <Input
-          label="رمز عبور"
+          label="Password"
           name="password"
           formik={formik}
           type="password"
         />
         <Input
-          label="تایید رمز عبور "
+          label="ConfirmPassword"
           name="passwordConfirm"
           formik={formik}
           type="password"
         />
         <button className="btn" disabled={!formik.isValid} type="submit">
-          ثبت نام
+          Sign Up
         </button>
         <Link to={`/login?redirect=${redirect}`}>
-        
-          <p>از قبل وارد سیستم شده اید؟</p>
+          <p>Already logged in?</p>
         </Link>
       </form>
     </div>

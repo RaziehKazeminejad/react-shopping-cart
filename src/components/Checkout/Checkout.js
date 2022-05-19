@@ -40,7 +40,7 @@ export default function Checkout() {
                         <p>
                           {c.title} * {c.quantity} :
                         </p>
-                        <p> {c.quantity * c.discountPercentage} تومان</p>
+                        <p> {c.quantity * c.discountPercentage} $</p>
                       </div>
                     );
                   })}

@@ -1,5 +1,5 @@
 .App {
-  font-family: 'Vazirmatn', sans-serif;
+  font-family: cursive;
 }
 
 *{
@@ -27,17 +27,22 @@ a{
   grid-row-gap: 5rem;
   max-width: 1170px;
   width: 90vw;
+  display: grid;
 }
 
-.product{
+.products{
   border-radius: 5px;
   display: flex;
   flex-direction: column;
 }
-
+.product{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .productImage img{
   width: 100%;
-  height: auto;
+  height: 324px;
 }
 
 .container{
@@ -49,10 +54,11 @@ a{
   padding: 10px;
   color: #fff;
   background-color: #6d28d9;
-  display: flex;
-  justify-content: space-between;
 }
-
+.productDesc button{
+  margin-top: 10px;
+  width: 100%;
+}
 button:disabled{
   cursor: not-allowed;
   background-color: #ccc;
@@ -90,6 +96,7 @@ button:disabled{
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
+  margin: 10px;
 }
 
 .cartItem .itemImg {
@@ -98,7 +105,7 @@ button:disabled{
 }
 .cartItem .itemImg img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .cartSummery {

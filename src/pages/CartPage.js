@@ -8,7 +8,7 @@ export default function CartPage() {
   if (!cart.length)
     return (
       <Layout>
-        <main>
+        <main className="container">
           <h2>Cart is empty!</h2>
         </main>
       </Layout>

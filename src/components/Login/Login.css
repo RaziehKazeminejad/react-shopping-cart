@@ -4,9 +4,10 @@
     margin-top: 20px;
   }
 .loginFromContainer button{
-  padding: 7px 189px;
-  margin-right: 8rem;
+  width: 550px;
 }  
 .loginFromContainer p{
-  margin: 1rem 0 1rem 7.5rem;
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
 }

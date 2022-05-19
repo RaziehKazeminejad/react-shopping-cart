@@ -19,7 +19,7 @@ export default function HomePage() {
 
   useEffect(() => {
     axios
-      .get('https://dummyjson.com/products?limit=10&skip=10')
+      .get('https://dummyjson.com/products?limit=10')
       .then((res) => {
         setData(res.data.products);
       })
@@ -32,13 +32,15 @@ export default function HomePage() {
         <section className="productList">
           {data.map((product) => {
             return (
-              <section className="product" key={product.id}>
+              <section className="products" key={product.id}>
                 <div className="productImage">
                   <img src={product.thumbnail} alt={product.title} />
                 </div>
                 <div className="productDesc">
-                  <p>{product.title}</p>
-                  <p>{product.price} $</p>
+                  <div className="product">
+                    <p>{product.title}</p>
+                    <p>{product.price} $</p>
+                  </div>
                   <div>
                     {checkInCart(cart, product) ? (
                       <button className="btn primary">
